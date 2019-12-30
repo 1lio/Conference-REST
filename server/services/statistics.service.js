@@ -93,7 +93,7 @@ class StatisticsService {
                 // TODO: Переделать костыль на регулярки
                 let fday = period[0] + period[1];
                 let fmount = period[3] + period[4];
-                let fyear = period[6] + period[7]+period[8] + period[9];
+                let fyear = period[6] + period[7] + period[8] + period[9];
 
                 // определенная дата
                 dayFrom = fday;
@@ -124,155 +124,22 @@ class StatisticsService {
         // TODO: Проверка на совместимость модели | пока пусть лучше упадет
 
         let findProp;
-        if(property === 'not') findProp = ''; else  findProp = property;
+        if (property === 'not') findProp = ''; else findProp = property;
 
         // Определяем значение
         let findValue = '';
-        if(value === 'not') findValue = ''; else  findValue = value;
+        if (value === 'not') findValue = ''; else findValue = value;
 
         let obj = {};
         obj[findProp] = findValue;
         obj[data] = findPeriod;
-
         // Делаем запрос в БД
-        //TODO:
-       return findModel.find(obj)
-
-
+        return findModel.find(obj)
     }
 
 
     captureStatistics() {
-
     }
-
-    // ---------------------------------------------------------------------------------------------
-
-    getMaxEventsAllTime() {
-        Event
-            .find({})
-            .catch(e => console.log(e))
-    }
-
-    getMaxEvensYear(year) {
-        let max = 0;
-        Event
-            .find({date: {$gte: ISODate(`${year}-01-01 00:00:00Z`), $lte: ISODate(`${year}-31-12 23:59:00Z`)}})
-            .map(max++)
-            .catch(e => console.log(e));
-
-        return max
-    }
-
-    getMaxEventsMount(mount) {
-
-        console.log(year);
-
-        let max = 0;
-        Event
-            .find({
-                date: {
-                    $gte: ISODate(`${year}-${mount}-01 00:00:00Z`),
-                    $lte: ISODate(`${year}-${mount}-31 23:59:00Z`)
-                }
-            })
-            .map(max++)
-            .catch(e => console.log(e));
-
-        return max
-    }
-
-
-    getMaxEventsWeek() {
-        // TODO: Max EVENTS AT WEEK
-    }
-
-    getMaxEventsDay() {
-        // TODO: MAX EVENT AT DAY
-        let max = 0;
-        let tmp = 0;
-        Event
-            .find({})
-            .then(e => {
-            })
-            .catch(e => console.log(e));
-
-        return max
-    }
-
-
-    getMaxMembersInEvent() {
-        let max = 0;
-        Event
-            .find({})
-            .then(e => max = e.members.length)
-            .catch(e => console.log(e));
-        return max
-    }
-
-    getCountMembers() {
-        Member
-            .find({})
-            .then(m => m.length)
-            .catch(e => console.log(e))
-    }
-
-    getMembersTimezone() {
-        /*
-
-         Member
-             .find({})
-             .then(() => timezones)
-             .catch(e => console.log(e))
-
-         let temp = {}
-         temp = timezones.filter(function (a) {
-             return temp[a] || !(temp[a] = !0)
-         })
-
-         console.log(temp)
-
-         return temp[0]*/
-    }
-
-
-    getCountReplacedEvents() {
-
-    }
-
-    getCanceledEvents() {
-    }
-
-    getPopularPlatform() {
-    }
-
-    getPopularPlatformUsed() {
-    }
-
-    getEventsDuration() {
-    }
-
-    getEventsMaxDuration() {
-    }
-
-    getEventsMinDuration() {
-    }
-
-    getEventsAverageDuration() {
-    }
-
-    getPopularMember() {
-    }
-
-    getMaxEventsFromInstitutes() {
-    }
-
-    getMinEventsFromInstitutes() {
-    }
-
-    eventsAverageStars() {
-    }
-
 
     // ----------------------------------------------------------------------------------------------
     getAll() {

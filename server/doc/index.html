@@ -4,27 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Title</title>
+    <title>API: ELSU Conference</title>
 </head>
-<body>
-<img src="http://185.180.231.155:3000/api/uploads?file=default/egu-logo.png" width="75" height="75" alt="logo">
+<body style="padding: 16px; margin: 0">
+
 <h3>Добро пожаловать на ELSU Conference API !</h3>
 
 <p>Список страниц:</p>
 <ul>
+    <b style="color: brown">/events </b>
     <li><a href="/api/events/list">Список всех событий</a></li>
     <li><a href="/api/events/1">Список всех событий постранично</a></li>
     <li><a href="/api/events/?id=0">Событие по {query:id} </a></li>
     <li><a href="/api/events/status/0">Список событий со статусом {/status}</a></li>
     <li><a href="/api/events/stars/5">Список событий по рейтингу {/stars}</a></li>
     <br/>
+    <b style="color: brown">/members</b>
     <li><a href="/api/members/list">Список участников</a></li>
     <li><a href="/api/members/id">Участник по id </a></li>
     <br/>
+    <b style="color: brown">/statistics</b>
     <li><a href="/api/statistics/">Получить всю статистику</a></li>
     <li><a href="/api/statistics/events">Получить статистику по событиям</a></li>
     <li><a href="/api/statistics/members">Получить статистику по участникам</a></li>
     <br/>
+    <b style="color: brown">/uploads</b>
     <li><a href="/api/uploads">Загрузить файл на сервер{post: file}</a></li>
     <li><a href="/api/uploads?file=default/egu-logo.png">Получить файл с сервера {query:file(path)}</a></li>
 </ul>
@@ -45,8 +49,7 @@
     <li><b>filter</b> - max, min</li>
 </ul>
 
-<p>Creators: Sukhov Viacheslav and Mark Puchkov 2019</p>
-<p>Server: Express Mongodb</p>
+<p>Creator: Sukhov Viacheslav 2019</p>
 
 </body>
 </html>

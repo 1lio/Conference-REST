@@ -4,7 +4,7 @@ const localhost = '127.0.0.1';
 
 module.exports = {
     // server
-    host: host,
+    host: localhost,
     clientPort: '8080',
     port: process.env.PORT || 3000,
 

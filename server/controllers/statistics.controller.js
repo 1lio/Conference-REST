@@ -1,10 +1,5 @@
 const StatisticsService = require('../services/statistics.service');
 
-let data = new Date;
-let year = data.getFullYear();
-let mount = data.getMonth();
-let day = data.getDay();
-
 class StatisticsController {
 
     // Собрать всю статистику

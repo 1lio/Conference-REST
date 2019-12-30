@@ -6,12 +6,5 @@ router
     .route('/')
     .get(StatisticsController.getStatistics);
 
-router
-    .route('/events')
-    .get(StatisticsController.getEvents);
-
-router
-    .route('/members')
-    .get(StatisticsController.getMembers);
 
 module.exports = router;
