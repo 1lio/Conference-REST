@@ -1,8 +1,8 @@
-require('../models/event')
-require('../models/member')
+require('../models/event');
+require('../models/member');
 
-const mongoose = require('mongoose')
-const Event = mongoose.model('event')
+const mongoose = require('mongoose');
+const Event = mongoose.model('event');
 
 class EventsService {
 
@@ -12,7 +12,7 @@ class EventsService {
 
     getEventsPage(page) {
 
-        const perPage = 10
+        const perPage = 10;
 
         return Event
             .find({})
@@ -28,13 +28,13 @@ class EventsService {
 
         } else if (url === '/day') {
 
-            let data = new Date()
+            let data = new Date();
 
-            let year = data.getFullYear()
-            let month = data.getMonth() + 1
-            let day = data.getDate()
+            let year = data.getFullYear();
+            let month = data.getMonth() + 1;
+            let day = data.getDate();
 
-            let findData = (day + "/" + month + "/" + year)
+            let findData = (day + "/" + month + "/" + year);
 
             return Event.find({date: findData})
                 .map(event => JSON.stringify(event))
@@ -43,13 +43,13 @@ class EventsService {
     }
 
     createEvent(data) {
-        console.log("post")
-        const event = new Event(data)
+        console.log("post");
+        const event = new Event(data);
         return event.save().catch(e => console.log(e))
     }
 
     updateEvent(data) {
-        console.log("put")
+        console.log("put");
 
         return Event.updateOne({_id: data._id}, {
             $set: {
@@ -79,4 +79,4 @@ class EventsService {
 
 }
 
-module.exports = new EventsService()
+module.exports = new EventsService();

@@ -1,22 +1,14 @@
-const config = require('./config/config')
-const fakeData = require('./utils/dbutils')
+const config = require('./config/config');
 
-const express = require('express')
-const socketIO = require('socket.io')
-const app = express()
-const http = require('http')
+const express = require('express');
+const app = express();
+const http = require('http');
+const server = http.createServer(app);
 
-const server = http.createServer(app)
-const socket = socketIO.listen(server)
+const db = require('./config/db');
+const exp = require('./config/express');
 
-const io = require('./config/sockets')
-const db = require('./config/db')
-const exp = require('./config/express')
+exp.configureExpress(app);
+db.connectDB();
 
-exp.configureExpress(app)
-io.connectSocket(socket)
-db.connectDB()
-
-server.listen(config.port, () => console.log(`Server started http://${config.host}:${config.port}/api/info`))
-
-//fakeData.generateEvents('10', 1)
+server.listen(config.port, () => console.log(`Server started http://${config.host}:${config.port}/api/info`));

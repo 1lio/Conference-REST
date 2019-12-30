@@ -1,17 +1,17 @@
-const express = require('express')
-const router = express.Router()
-const StatisticsController = require('../controllers/statistics.controller')
+const express = require('express');
+const router = express.Router();
+const StatisticsController = require('../controllers/statistics.controller');
 
 router
     .route('/')
-    .get(StatisticsController.getStatistics)
+    .get(StatisticsController.getStatistics);
 
 router
     .route('/events')
-    .get(StatisticsController.getEvents)
+    .get(StatisticsController.getEvents);
 
 router
     .route('/members')
-    .get(StatisticsController.getMembers)
+    .get(StatisticsController.getMembers);
 
-module.exports = router
+module.exports = router;

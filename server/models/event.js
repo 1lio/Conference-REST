@@ -1,7 +1,7 @@
-require('../models/member')
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const Members = mongoose.model('member')
+require('../models/member');
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const Members = mongoose.model('member');
 
 // Status number
 // 0 - Запланировано
@@ -60,6 +60,6 @@ const EventSchema = new Schema({
         type: Number,
         default: 5
     }
-})
+});
 
-module.exports = Event = mongoose.model('event', EventSchema)
+module.exports = Event = mongoose.model('event', EventSchema);

@@ -1,18 +1,18 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-require('../models/event')
-require('../models/member')
-require('../models/statistics')
+require('../models/event');
+require('../models/member');
+require('../models/statistics');
 
-const EventsService = require('../services/evets.service')
-const MembersService = require('../services/members.service')
+const EventsService = require('../services/evets.service');
+const MembersService = require('../services/members.service');
 
-const Event = mongoose.model('event')
-const Member = mongoose.model('member')
-const Statistics = mongoose.model('statistics')
+const Event = mongoose.model('event');
+const Member = mongoose.model('member');
+const Statistics = mongoose.model('statistics');
 
-let currentDate = require('../utils/utils').getDate
-let currentTime = require('../utils/utils').getTime
+let currentDate = require('../utils/utils').getDate;
+let currentTime = require('../utils/utils').getTime;
 
 const defaultMember = {
     name: 'ЕГУ им. И.А.Бунина',
@@ -22,7 +22,7 @@ const defaultMember = {
     mail: "it@elsu.ru",
     timeZone: "+3",
     assistant: 'Вячеслав Сухов'
-}
+};
 
 class DBUtils {
 
@@ -31,7 +31,7 @@ class DBUtils {
 
         Event.deleteMany({})
             .then(console.log('All evens deleted'))
-            .catch(e => console.log(e))
+            .catch(e => console.log(e));
 
         Member.deleteMany({})
             .then(console.log('All members deleted'))
@@ -67,7 +67,7 @@ class DBUtils {
                 lifecycle: [0],
                 institute: 'none',
                 stars: 5
-            }
+            };
 
             EventsService.createEvent(data)
         }
@@ -83,7 +83,7 @@ class DBUtils {
                 mail: "random@random.sa",
                 timeZone: "+3",
                 assistant: `Fake assistant ${i}`,
-            }
+            };
 
             MembersService.createMember(data)
         }
@@ -94,4 +94,4 @@ class DBUtils {
     }
 }
 
-module.exports = new DBUtils()
+module.exports = new DBUtils();

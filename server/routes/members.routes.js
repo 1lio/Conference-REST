@@ -1,11 +1,11 @@
-const express = require('express')
-const router = express.Router()
-const MembersController = require('../controllers/members.controller')
+const express = require('express');
+const router = express.Router();
+const MembersController = require('../controllers/members.controller');
 
 // List all members
 router
     .route('/list')
-    .get(MembersController.getMemberList)
+    .get(MembersController.getMemberList);
 
 // The member
 router
@@ -13,6 +13,6 @@ router
     .get(MembersController.getMember)
     .post(MembersController.createMember)
     .put(MembersController.updateMember)
-    .delete(MembersController.deleteMember)
+    .delete(MembersController.deleteMember);
 
-module.exports = router
+module.exports = router;

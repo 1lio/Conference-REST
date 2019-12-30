@@ -1,6 +1,6 @@
-const multer = require('multer')
-const path = require('path')
-const fs = require('fs')
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 const storage = multer.diskStorage({
 
@@ -13,8 +13,8 @@ const storage = multer.diskStorage({
     filename: function (req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
-})
-const express = require('express')
+});
+const express = require('express');
 
 
 const fileFilter = (req, file, cb) => {
@@ -28,25 +28,25 @@ const fileFilter = (req, file, cb) => {
     } else {
         cb(null, false)
     }
-}
+};
 
-const upload = multer({storage: storage, fileFilter: fileFilter}).single('file')
+const upload = multer({storage: storage, fileFilter: fileFilter}).single('file');
 
 class FileManager {
 
     uploadFile(req, res) {
         upload(req, res, function (err) {
-            let fileData = req.file
+            let fileData = req.file;
 
-            if (!fileData) res.send({status: "upload error"})
+            if (!fileData) res.send({status: "upload error"});
             else res.send({status: "success"})
         })
     }
 
     getImage(req, res) {
-        const file = `../elsu/server/uploads/${req.query.file}`
+        const file = `../elsu/server/uploads/${req.query.file}`;
         res.download(file)
     }
 }
 
-module.exports = new FileManager()
+module.exports = new FileManager();

@@ -1,4 +1,4 @@
-let clients = 0
+let clients = 0;
 
 // Configure sockets from this file
 // TODO: Разобраться с сокетами
@@ -6,18 +6,18 @@ let clients = 0
 const connectSocket = (io) => {
 
     io.on('connection', (socket) => {
-        clients++
-        console.log('client connected: ' + socket.id + ' count clients: ' + clients)
+        clients++;
+        console.log('client connected: ' + socket.id + ' count clients: ' + clients);
 
-        socket.emit('broadcast', {description: clients + ' clients connected!'})
+        socket.emit('broadcast', {description: clients + ' clients connected!'});
         socket.on('disconnect', () => {
-            clients--
+            clients--;
            io.sockets.emit('broadcast', {description: clients + ' clients connected!'})
         })
     })
 
-}
+};
 
-const broadcastUpdateIO = (data) => {}
+const broadcastUpdateIO = (data) => {};
 
-module.exports = {connectSocket, broadcastUpdateIO}
+module.exports = {connectSocket, broadcastUpdateIO};

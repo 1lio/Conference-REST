@@ -1,7 +1,7 @@
-require('../models/member')
+require('../models/member');
 
-const mongoose = require('mongoose')
-const Member = mongoose.model('member')
+const mongoose = require('mongoose');
+const Member = mongoose.model('member');
 
 class MembersService {
 
@@ -37,4 +37,4 @@ class MembersService {
     }
 }
 
-module.exports = new MembersService()
+module.exports = new MembersService();

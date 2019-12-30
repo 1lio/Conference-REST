@@ -1,43 +1,43 @@
-require('../models/statistics')
-require('../models/event')
-require('../models/member')
-require('../models/institute')
+require('../models/statistics');
+require('../models/event');
+require('../models/member');
+require('../models/institute');
 
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-const Statistics = mongoose.model('statistics')
-const Event = mongoose.model('event')
-const Member = mongoose.model('member')
-const Institute = mongoose.model('institute')
+const Statistics = mongoose.model('statistics');
+const Event = mongoose.model('event');
+const Member = mongoose.model('member');
+const Institute = mongoose.model('institute');
 
-let data = new Date
-let year = data.getFullYear()
-let mount = data.getMonth()
-let day = data.getDay()
+let data = new Date;
+let year = data.getFullYear();
+let mount = data.getMonth();
+let day = data.getDay();
 
 class StatisticsService {
 
     // Фильтрованный запрос
     getModel(model, period, property, value) {
 
-        let yearFrom = year
-        let yearTo = year
-        let mountFrom = mount
-        let mountTo = mount
-        let dayFrom = day
-        let dayTo = day
+        let yearFrom = year;
+        let yearTo = year;
+        let mountFrom = mount;
+        let mountTo = mount;
+        let dayFrom = day;
+        let dayTo = day;
 
         // Определяем модель
-        let findModel
+        let findModel;
         switch (model) {
             case 'event':
-                findModel = Event
-                break
+                findModel = Event;
+                break;
             case 'member':
-                findModel = Member
-                break
+                findModel = Member;
+                break;
             case 'institute':
-                findModel = Institute
+                findModel = Institute;
                 break
         }
 
@@ -45,15 +45,15 @@ class StatisticsService {
         let findPeriod = {
             $gte: ISODate(`${yearFrom}-${mountFrom}-${dayFrom} 00:00:00Z`),
             $lte: ISODate(`${yearTo}-${mountTo}-${dayTo} 23:59:00Z`)
-        }
+        };
         switch (period) {
             // current day
             case 'day' || 'current' || 'currentDay':
-                break
+                break;
             case period.length === 2 : {
                 // день
-                dayFrom = period
-                dayTo = period
+                dayFrom = period;
+                dayTo = period;
                 break
             }
             case 'january' || 'february' || 'march' || 'april' || 'may' || 'june' || 'july' || 'august'
@@ -61,60 +61,60 @@ class StatisticsService {
             || 'jul' || 'aug' || 'sep' || 'oct' || 'nov' || 'dec': {
 
                 // месяц
-                let findMount = 1
+                let findMount = 1;
                 let mouths = ['january', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December',
-                    'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
+                    'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
 
                 mouths.forEach((value, index) => {
                     if (value === period) findMount = index + 1
-                })
+                });
 
-                dayFrom = 1
-                dayTo = 31
+                dayFrom = 1;
+                dayTo = 31;
 
-                mountFrom = findMount
-                mountFrom = findMount
+                mountFrom = findMount;
+                mountFrom = findMount;
                 break
             }
             case period.length === 4 : {
                 // год
-                dayFrom = 1
-                dayTo = 31
+                dayFrom = 1;
+                dayTo = 31;
 
-                mountFrom = 1
-                mountTo = 12
+                mountFrom = 1;
+                mountTo = 12;
 
-                yearFrom = period
-                yearTo = period
+                yearFrom = period;
+                yearTo = period;
                 break
             }
             case period.length === 9 : {
 
                 // TODO: Переделать костыль на регулярки
-                let fday = period[0] + period[1]
-                let fmount = period[3] + period[4]
-                let fyear = period[6] + period[7]+period[8] + period[9]
+                let fday = period[0] + period[1];
+                let fmount = period[3] + period[4];
+                let fyear = period[6] + period[7]+period[8] + period[9];
 
                 // определенная дата
-                dayFrom = fday
-                dayTo = fday
+                dayFrom = fday;
+                dayTo = fday;
 
-                mountFrom = fmount
-                mountFrom = fmount
+                mountFrom = fmount;
+                mountFrom = fmount;
 
-                yearFrom = fyear
-                yearTo = fyear
+                yearFrom = fyear;
+                yearTo = fyear;
                 break
             }
             default : {
                 //За весь период
-                dayFrom = 1
-                dayTo = 31
+                dayFrom = 1;
+                dayTo = 31;
 
-                mountFrom = 1
-                mountFrom = 12
+                mountFrom = 1;
+                mountFrom = 12;
 
-                yearFrom = 2019
+                yearFrom = 2019;
                 yearTo = year
             }
 
@@ -123,16 +123,16 @@ class StatisticsService {
         // Определяем свойство
         // TODO: Проверка на совместимость модели | пока пусть лучше упадет
 
-        let findProp
-        if(property === 'not') findProp = '' else  findProp = property
+        let findProp;
+        if(property === 'not') findProp = ''; else  findProp = property;
 
         // Определяем значение
-        let findValue = ''
-        if(value === 'not') findValue = '' else  findValue = value
+        let findValue = '';
+        if(value === 'not') findValue = ''; else  findValue = value;
 
-        let obj = {}
-        obj[findProp] = findValue
-        obj[data] = findPeriod
+        let obj = {};
+        obj[findProp] = findValue;
+        obj[data] = findPeriod;
 
         // Делаем запрос в БД
         //TODO:
@@ -155,20 +155,20 @@ class StatisticsService {
     }
 
     getMaxEvensYear(year) {
-        let max = 0
+        let max = 0;
         Event
             .find({date: {$gte: ISODate(`${year}-01-01 00:00:00Z`), $lte: ISODate(`${year}-31-12 23:59:00Z`)}})
             .map(max++)
-            .catch(e => console.log(e))
+            .catch(e => console.log(e));
 
         return max
     }
 
     getMaxEventsMount(mount) {
 
-        console.log(year)
+        console.log(year);
 
-        let max = 0
+        let max = 0;
         Event
             .find({
                 date: {
@@ -177,7 +177,7 @@ class StatisticsService {
                 }
             })
             .map(max++)
-            .catch(e => console.log(e))
+            .catch(e => console.log(e));
 
         return max
     }
@@ -189,24 +189,24 @@ class StatisticsService {
 
     getMaxEventsDay() {
         // TODO: MAX EVENT AT DAY
-        let max = 0
-        let tmp = 0
+        let max = 0;
+        let tmp = 0;
         Event
             .find({})
             .then(e => {
             })
-            .catch(e => console.log(e))
+            .catch(e => console.log(e));
 
         return max
     }
 
 
     getMaxMembersInEvent() {
-        let max = 0
+        let max = 0;
         Event
             .find({})
             .then(e => max = e.members.length)
-            .catch(e => console.log(e))
+            .catch(e => console.log(e));
         return max
     }
 
@@ -288,4 +288,4 @@ class StatisticsService {
     }
 }
 
-module.exports = new StatisticsService
+module.exports = new StatisticsService;

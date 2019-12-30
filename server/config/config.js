@@ -1,6 +1,6 @@
 // Add to .gitignore before deploy
-const host = '185.195.26.71'
-const localhost = '127.0.0.1'
+const host = '185.195.26.71';
+const localhost = '127.0.0.1';
 
 module.exports = {
     // server
@@ -12,4 +12,4 @@ module.exports = {
     dbHost: localhost,
     dbPort: 27017,
     dbName: 'elsu'
-}
+};

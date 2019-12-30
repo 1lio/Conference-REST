@@ -1,6 +1,6 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const date = require('../utils/utils').getDate
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const date = require('../utils/utils').getDate;
 
 const StatisticsSchema = new Schema({
 
@@ -108,6 +108,6 @@ const StatisticsSchema = new Schema({
         max: 10
     }
 
-})
+});
 
 module.exports = Member = mongoose.model('statistics', StatisticsSchema);

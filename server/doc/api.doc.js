@@ -5,4 +5,4 @@ class ApiDoc {
     }
 }
 
-module.exports = new ApiDoc()
+module.exports = new ApiDoc();
