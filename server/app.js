@@ -9,6 +9,7 @@ const db = require('./config/db');
 const exp = require('./config/express');
 
 exp.configureExpress(app);
-db.connectDB();
+
+if (config.enableDB) db.connectDB().then();
 
 server.listen(config.port, () => console.log(`Server started http://${config.host}:${config.port}/api/info`));

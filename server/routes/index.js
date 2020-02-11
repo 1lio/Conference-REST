@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+const {Router} = require('express');
+const router = Router();
 const apiDoc = require('../doc/api.doc');
 
 const eventsRoutes = require('./events.routes');

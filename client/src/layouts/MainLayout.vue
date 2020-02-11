@@ -1,16 +1,9 @@
 <template>
     <div>
-
         <Sidebar/>
-
         <v-content style="margin: 10px;">
-
-
             <router-view/>
-
-
         </v-content>
-
     </div>
 </template>
 

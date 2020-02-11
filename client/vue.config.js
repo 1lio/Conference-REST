@@ -3,9 +3,9 @@ module.exports = {
     publicPath: '',
 
     devServer: {
-        host: '185.195.26.71'
+        host: '127.0.0.1'
     },
     transpileDependencies: [
         "vuetify"
     ]
-}
+};

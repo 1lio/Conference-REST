@@ -3,6 +3,10 @@ const host = '185.195.26.71';
 const localhost = '127.0.0.1';
 
 module.exports = {
+
+    // config
+    enableDB: true,
+
     // server
     host: localhost,
     clientPort: '8080',
@@ -11,5 +15,6 @@ module.exports = {
     //db
     dbHost: localhost,
     dbPort: 27017,
-    dbName: 'elsu'
+    dbName: 'elsu',
+    dbUrl: `mongodb://${localhost}/elsu`,
 };

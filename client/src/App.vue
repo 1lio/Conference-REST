@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <component :is="layout">  <!--generick component -->
+    <component :is="layout">
       <router-view/>
     </component>
   </v-app>

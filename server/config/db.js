@@ -5,11 +5,22 @@ const utils = require('../utils/utils');
 // Configure db from this file
 
 // Connection and configure db this function
-const connectDB = () => {
-    mongoose.connect(`mongodb://${config.dbHost}/${config.dbName}`, {useNewUrlParser: true, useUnifiedTopology: true})
-        .then(() => console.log(`Mongodb started http://${config.dbHost}:${config.dbPort}`))
-        .catch(e => console.log('Mongodb error \n' + e))
-};
+async function connectDB() {
+
+    try {
+        await mongoose.connect(config.dbUrl, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            useCreateIndex: true
+        })
+            .then(() => console.log(`Mongodb started http://${config.dbHost}:${config.dbPort}`))
+            .catch(e => console.log('Mongodb error \n' + e))
+
+    } catch (e) {
+        console.log(e.message);
+        process.exit(1)
+    }
+}
 
 // Utils method for db
 
