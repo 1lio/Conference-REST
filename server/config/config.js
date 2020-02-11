@@ -10,7 +10,7 @@ module.exports = {
     // server
     host: localhost,
     clientPort: '8080',
-    port: process.env.PORT || 5000,
+    port: process.env.PORT || 3000,
 
     //db
     dbHost: localhost,
