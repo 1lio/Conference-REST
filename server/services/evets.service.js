@@ -36,7 +36,8 @@ class EventsService {
 
             let findData = (day + "/" + month + "/" + year);
 
-            return Event.find({date: findData})
+            return Event
+                .find({date: findData})
                 .map(event => JSON.stringify(event))
                 .catch(e => console.log(e))
         }

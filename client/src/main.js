@@ -5,7 +5,7 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify'
 
-const BASE_URL = 'http://185.195.26.71:3000'
+const BASE_URL = 'http://127.0.0.1:3000';
 
 // Как рабочий вариант
 /*const socket = require('socket.io-client')(BASE_URL)

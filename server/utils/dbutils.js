@@ -92,6 +92,13 @@ class DBUtils {
     getDefaultMember() {
         return defaultMember
     }
+
+    // TODO: Count details
+    getStatusDB(){
+        return {
+
+        }
+    }
 }
 
 module.exports = new DBUtils();

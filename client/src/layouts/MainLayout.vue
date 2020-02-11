@@ -7,8 +7,6 @@
 
 
             <router-view/>
-
-
         </v-content>
 
     </div>
