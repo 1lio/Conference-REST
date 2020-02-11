@@ -59,7 +59,7 @@ class EventsService {
                 status: data.status,
                 time: data.time,
                 date: data.date,
-                platform: data.platform,
+                p_idlatform: data.platform,
                 description: data.description
             }
         })
@@ -67,7 +67,8 @@ class EventsService {
     }
 
     deleteEvent(data) {
-        Event.deleteOne({_id: data.id}).catch(e => console.log(e))
+        console.log('i this')
+         return Event.deleteOne({_id: data}).catch(e => console.log(e))
     }
 
     getStatus(status) {

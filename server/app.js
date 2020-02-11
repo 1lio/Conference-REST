@@ -13,3 +13,5 @@ exp.configureExpress(app);
 if (config.enableDB) db.connectDB().then();
 
 server.listen(config.port, () => console.log(`Server started http://${config.host}:${config.port}/api/info`));
+
+//db.generateFakeEvents(10, 3)

@@ -4,15 +4,6 @@
         <v-tab to="/events">
             Все события
         </v-tab>
-        <v-tab to="/events/add">
-            Добавить
-        </v-tab>
-        <v-tab to="/events/complete">
-            Завершенные
-        </v-tab>
-        <v-tab to="/events/archive">
-            Архив
-        </v-tab>
     </v-tabs>
 
     <router-view v-if="($route.path !== '/events')"/>
@@ -70,7 +61,7 @@
         <v-col cols="12">Запланированные</v-col>
         <v-col
                 v-for="(event, index) in eventsPlaned"
-                :key="event._id"
+                :key="index"
                 cols="12"
                 v-if="index === 0 || index === 1 || index === 2 && visible2 || !visible2"
         >

@@ -40,10 +40,16 @@ class EventsController {
     async deleteEvent(req, res) {
         console.log('delete event: ' + req.body.id);
         if (req.body) {
-            let result = await EventsService.deleteEvent(req.body);
+            let result = await EventsService.deleteEvent(req.body.id);
+            console.log(req.body)
+            //console.log(req.query)
             if (result) {
+                console.log('deleted: ' + req.body.id);
                 return res.status(200).send(result)
-            } else return res.status(500).send({message: 'Unable delete event.'})
+            } else {
+                console.log('not deleted: ' + req.body.id);
+                return res.status(500).send({message: 'Unable delete event.'})
+            }
         } else return res.status(400).send({message: 'Bad request.'})
     }
 
