@@ -1,5 +1,5 @@
 // Add to .gitignore before deploy
-const host = '185.195.26.71';
+const host = '10.8.0.13';
 const localhost = '127.0.0.1';
 
 module.exports = {
@@ -8,12 +8,12 @@ module.exports = {
     enableDB: true,
 
     // server
-    host: localhost,
+    host: host,
     clientPort: '8080',
     port: process.env.PORT || 3000,
 
     //db
-    dbHost: localhost,
+    dbHost: host,
     dbPort: 27017,
     dbName: 'elsu',
     dbUrl: `mongodb://${localhost}/elsu`,

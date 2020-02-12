@@ -53,6 +53,11 @@ class DBUtils {
 
     generateEvents(count, status) {
 
+        if (count === 0 || count === undefined) {
+            console.log(`Невозможно сгенирировать ${count} событий`);
+            return;
+        }
+
         for (let i = 0; i < count; i++) {
 
             const data = {
@@ -74,6 +79,12 @@ class DBUtils {
     }
 
     generateMembers(count) {
+
+        if (count === 0 || count === undefined) {
+            console.log(`Невозможно сгенирировать ${count} участников`);
+            return;
+        }
+
         for (let i = 0; i < count; i++) {
             const data = {
                 name: `Fake member $i`,
@@ -89,15 +100,11 @@ class DBUtils {
         }
     }
 
-    getDefaultMember() {
-        return defaultMember
-    }
+    getDefaultMember() {return defaultMember}
 
     // TODO: Count details
-    getStatusDB(){
-        return {
-
-        }
+    getStatusDB() {
+        return {}
     }
 }
 
