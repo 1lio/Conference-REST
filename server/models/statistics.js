@@ -88,7 +88,7 @@ const StatisticsSchema = new Schema({
 
     popularMember: {
         type: Object,
-        default: {msg: 'no objects'}
+        default: {msg: 'non objects'}
     },
 
     maxEventsFromInstitute: {
